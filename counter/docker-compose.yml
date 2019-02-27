@@ -1,0 +1,26 @@
+version: '3'
+services:
+  httpd:
+    build: ./httpd
+    image: training:httpd
+    volumes:
+      - /Users/charles/projects/DockerTraining/data/html:/var/www/localhost/htdocs
+    ports:
+      - 9080:80
+    environment:
+      - MONGO_CS=mongodb://mongo:27017
+    networks:
+      - net
+  mongo:
+    build: ./mongo
+    image: training:mongo
+    volumes:
+      - mongo-data:/data/db
+    command: --bind_ip_all
+    networks:
+      - net
+volumes:
+  mongo-data:
+networks:
+  net:
+

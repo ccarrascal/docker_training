@@ -1,0 +1,11 @@
+version: '3'
+services:
+  httpd:
+    build: ./httpd
+    image: training:httpd
+    network_mode: host
+  mongo:
+    build: ./mongo
+    image: training:mongo
+    network_mode: host
+
